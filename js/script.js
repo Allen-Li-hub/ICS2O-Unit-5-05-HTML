@@ -1,32 +1,56 @@
 // Copyright (c) 2022 Allen Li All rights reserved
 //
 // Created by: Allen Li
-// Created on: Oct 2022
+// Created on: Dec 2022
 // This file contains the JS functions for index.html
 
 "use strict"
 
-/**
- * Check servie worker.
- */
 if (navigator.serviceWorker) {
-  navigator.serviceWorker.register("/ICS2O-Unit5-01-HTML/sw.js", {
-    scope: "/ICS2O-Unit5-01-HTML/",
+  navigator.serviceWorker.register("/ICS2O-Unit5-05-HTML/sw.js", {
+    scope: "/ICS2O-Unit5-05-HTML/",
   })
 }
 
-const randomNumber = Math.floor(Math.random() * 6) + 1
+function button() {
+  // input setting
+  const lengthAString = parseInt(document.getElementById("lengthA").value)
+  const lengthBString = parseInt(document.getElementById("lengthB").value)
+  const lengthCString = parseInt(document.getElementById("lengthC").value)
 
-function updateSliderValue(valueFromSlider) {
-  document.getElementById("slider-value").innerHTML = valueFromSlider
+  const lengthA = parseFloat(lengthAString)
+  const lengthB = parseFloat(lengthBString)
+  const lengthC = parseFloat(lengthCString)
 
-  if (valueFromSlider == randomNumber) {
-    document.getElementById("answer").innerHTML =
-      "the answer was, " + randomNumber + "!" + " You got it! Excellent."
-  }
+  // process
+  const angleA =
+    Math.acos(
+      (lengthB ** 2 + lengthC ** 2 - lengthA ** 2) / (2 * lengthB * lengthC)
+    ) *
+    (180 / Math.PI)
+  const angleB =
+    Math.acos(
+      (lengthC ** 2 + lengthA ** 2 - lengthB ** 2) / (2 * lengthC * lengthA)
+    ) *
+    (180 / Math.PI)
+  const angleC =
+    Math.acos(
+      (lengthA ** 2 + lengthB ** 2 - lengthC ** 2) / (2 * lengthA * lengthB)
+    ) *
+    (180 / Math.PI)
 
-  if (valueFromSlider != randomNumber) {
-    document.getElementById("answer").innerHTML =
-      "Sorry the answer was, " + randomNumber + "!" + " please try again."
+  if (angleA == angleB && angleA == angleC) {
+    document.getElementById("math").innerHTML =
+      "You have an equalatiral triangle!"
+  } else if (angleA != angleB && angleA != angleC && angleB != angleC) {
+    document.getElementById("math").innerHTML = "You have a scalene triangle!"
+  } else if (
+    (angleA != angleB && angleA == angleC) ||
+    (angleA == angleB && angleA != angleC)
+  ) {
+    document.getElementById("math").innerHTML = "You have a isosceles triangle!"
+  } else {
+    document.getElementById("math").innerHTML = "This triangle doesn't exist."
   }
 }
+
