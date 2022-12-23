@@ -53,4 +53,3 @@ function button() {
     document.getElementById("math").innerHTML = "This triangle doesn't exist."
   }
 }
-
