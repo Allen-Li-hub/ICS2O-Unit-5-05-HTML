@@ -48,7 +48,8 @@ function button() {
     (angleA != angleB && angleA == angleC) ||
     (angleA == angleB && angleA != angleC)
   ) {
-    document.getElementById("math").innerHTML = "You have an isosceles triangle!"
+    document.getElementById("math").innerHTML =
+      "You have an isosceles triangle!"
   } else {
     document.getElementById("math").innerHTML = "This triangle doesn't exist."
   }
