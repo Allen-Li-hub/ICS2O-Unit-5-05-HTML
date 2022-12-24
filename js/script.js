@@ -41,14 +41,14 @@ function button() {
 
   if (angleA == angleB && angleA == angleC) {
     document.getElementById("math").innerHTML =
-      "You have an equalatiral triangle!"
+      "You have an equilateral triangle!"
   } else if (angleA != angleB && angleA != angleC && angleB != angleC) {
-    document.getElementById("math").innerHTML = "You have a scalene triangle!"
+    document.getElementById("math").innerHTML = "You have an scalene triangle!"
   } else if (
     (angleA != angleB && angleA == angleC) ||
     (angleA == angleB && angleA != angleC)
   ) {
-    document.getElementById("math").innerHTML = "You have a isosceles triangle!"
+    document.getElementById("math").innerHTML = "You have an isosceles triangle!"
   } else {
     document.getElementById("math").innerHTML = "This triangle doesn't exist."
   }
